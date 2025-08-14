@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dehwi6he1cp33"]
+
+[ext_resource type="Script" uid="uid://bx2y4jjj7juml" path="res://prototypes/002_SpaceObject/space_object.gd" id="1_xtggf"]
+
+[node name="SpaceObject" type="Node3D"]
+script = ExtResource("1_xtggf")
+
+[node name="Body" type="Node3D" parent="."]

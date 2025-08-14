@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bei5uw1s7ei6m"]
+[gd_scene load_steps=9 format=3 uid="uid://cawuqacv623bl"]
 
-[ext_resource type="PackedScene" uid="uid://cu6ysso3j3ty3" path="res://prototypes/001_Space/surface_2.tscn" id="1_djaei"]
-[ext_resource type="PackedScene" uid="uid://bpt5e0qrika4a" path="res://prototypes/001_Space/player.tscn" id="2_djaei"]
+[ext_resource type="PackedScene" uid="uid://deh0hl6rvxm88" path="res://prototypes/002_SpaceObject/surface_3.tscn" id="1_4iea8"]
+[ext_resource type="PackedScene" uid="uid://die2ekh5an1tb" path="res://prototypes/002_SpaceObject/player.tscn" id="2_4iea8"]
 
 [sub_resource type="Gradient" id="Gradient_djaei"]
 offsets = PackedFloat32Array(0, 0.779661, 1)
@@ -33,15 +33,7 @@ sky = SubResource("Sky_0tim2")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6r3wd")
 
-[node name="Surface2" parent="." instance=ExtResource("1_djaei")]
+[node name="Surface3" parent="." instance=ExtResource("1_4iea8")]
 
-[node name="Pivot" type="Node3D" parent="Surface2"]
-
-[node name="Camera3D" type="Camera3D" parent="Surface2/Pivot"]
-transform = Transform3D(-1, 7.57103e-08, -4.37115e-08, -4.37115e-08, 2.08616e-07, 1, 7.57103e-08, 1, -2.08616e-07, 0, 64, 0)
-current = true
-
-[node name="Rotation" type="Node3D" parent="Surface2/Pivot"]
-
-[node name="Player" parent="Surface2/Pivot/Rotation" instance=ExtResource("2_djaei")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 0)
+[node name="Player" parent="Surface3" instance=ExtResource("2_4iea8")]
+height = 40.0
