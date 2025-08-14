@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://bei5uw1s7ei6m"]
+
+[ext_resource type="PackedScene" uid="uid://cu6ysso3j3ty3" path="res://prototypes/001_Space/surface_2.tscn" id="1_djaei"]
+[ext_resource type="PackedScene" uid="uid://bpt5e0qrika4a" path="res://prototypes/001_Space/player.tscn" id="2_djaei"]
+
+[sub_resource type="Gradient" id="Gradient_djaei"]
+offsets = PackedFloat32Array(0, 0.779661, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8i7ku"]
+frequency = 1.0
+fractal_gain = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6lafv"]
+width = 2048
+height = 2048
+in_3d_space = true
+color_ramp = SubResource("Gradient_djaei")
+noise = SubResource("FastNoiseLite_8i7ku")
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gq4su"]
+panorama = SubResource("NoiseTexture2D_6lafv")
+
+[sub_resource type="Sky" id="Sky_0tim2"]
+sky_material = SubResource("PanoramaSkyMaterial_gq4su")
+
+[sub_resource type="Environment" id="Environment_6r3wd"]
+background_mode = 2
+sky = SubResource("Sky_0tim2")
+
+[node name="Scene" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6r3wd")
+
+[node name="Surface2" parent="." instance=ExtResource("1_djaei")]
+
+[node name="Pivot" type="Node3D" parent="Surface2"]
+
+[node name="Camera3D" type="Camera3D" parent="Surface2/Pivot"]
+transform = Transform3D(-1, 7.57103e-08, -4.37114e-08, 0, 0.5, 0.866025, 8.74228e-08, 0.866025, -0.5, 0, 56, -3)
+current = true
+
+[node name="Rotation" type="Node3D" parent="Surface2/Pivot"]
+
+[node name="Player" parent="Surface2/Pivot/Rotation" instance=ExtResource("2_djaei")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 0)

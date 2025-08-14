@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://c81c4ri3unwm8"]
+
+[sub_resource type="Gradient" id="Gradient_hgr6d"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8s6rv"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fsd81"]
+in_3d_space = true
+seamless = true
+color_ramp = SubResource("Gradient_hgr6d")
+noise = SubResource("FastNoiseLite_8s6rv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lt6v7"]
+albedo_texture = SubResource("NoiseTexture2D_fsd81")
+grow_amount = 11.789
+
+[node name="Surface" type="Node3D"]
+
+[node name="Mesh" type="CSGSphere3D" parent="."]
+radius = 3.0
+radial_segments = 100
+rings = 60
+material = SubResource("StandardMaterial3D_lt6v7")

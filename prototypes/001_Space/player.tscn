@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpt5e0qrika4a"]
+
+[ext_resource type="Script" uid="uid://bi00g2ue54m12" path="res://prototypes/001_Space/player.gd" id="1_6ss1u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cwbkg"]
+size = Vector3(0.6, 0.3, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ss1u"]
+albedo_color = Color(1, 0, 0, 1)
+metallic = 1.0
+roughness = 0.5
+
+[node name="Player" type="StaticBody3D"]
+script = ExtResource("1_6ss1u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00265503, 0.15, 0)
+shape = SubResource("BoxShape3D_cwbkg")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="Mesh" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
+size = Vector3(0.6, 0.3, 1)
+material = SubResource("StandardMaterial3D_6ss1u")
+
+[node name="Mesh2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.449342, 0.148331, -0.501859)
+size = Vector3(0.3, 0.3, 0.5)
+material = SubResource("StandardMaterial3D_6ss1u")
+
+[node name="Mesh3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.450658, 0.148331, -0.501859)
+size = Vector3(0.3, 0.3, 0.5)
+material = SubResource("StandardMaterial3D_6ss1u")

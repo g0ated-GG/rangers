@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://cu6ysso3j3ty3"]
+
+[ext_resource type="PackedScene" uid="uid://c81c4ri3unwm8" path="res://prototypes/001_Space/surface.tscn" id="1_q86uj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ocdp5"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q86uj"]
+albedo_color = Color(1, 1, 0, 1)
+metallic = 0.5
+roughness = 0.5
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+emission_energy_multiplier = 10.0
+ao_light_affect = 0.18
+grow_amount = 9.095
+
+[node name="Surface2" type="Node3D"]
+
+[node name="Bounds" type="CSGSphere3D" parent="."]
+radius = 50.0
+radial_segments = 100
+rings = 60
+material = SubResource("StandardMaterial3D_ocdp5")
+
+[node name="Star" type="CSGSphere3D" parent="."]
+radius = 10.0
+radial_segments = 24
+rings = 12
+material = SubResource("StandardMaterial3D_q86uj")
+
+[node name="Planet" parent="." instance=ExtResource("1_q86uj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 47)
+
+[node name="Planet2" parent="." instance=ExtResource("1_q86uj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_energy = 20.0
+omni_range = 100.0
