@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ydicw247e3x"]
+
+[ext_resource type="Script" uid="uid://ci5vhtyw8c0fl" path="res://scenes/common/space_object.gd" id="1_7rny3"]
+
+[node name="SpaceObject" type="CharacterBody3D"]
+motion_mode = 1
+script = ExtResource("1_7rny3")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmege7dljkmi7"]
+
+[ext_resource type="PackedScene" uid="uid://ydicw247e3x" path="res://scenes/common/space_object.tscn" id="1_d7qqs"]
+[ext_resource type="Script" uid="uid://dnpk28c418gu1" path="res://scenes/common/astronomical_object.gd" id="2_v4eem"]
+
+[node name="AstronomicalObject" instance=ExtResource("1_d7qqs")]
+script = ExtResource("2_v4eem")
+objectName = ""

@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3 uid="uid://c0l8n2vrbekba"]
+
+[ext_resource type="PackedScene" uid="uid://b7418dpyt0qo5" path="res://scenes/entities/star.tscn" id="1_4yjvo"]
+[ext_resource type="PackedScene" uid="uid://cr3tltmkk8pfa" path="res://scenes/entities/planet.tscn" id="2_8aytx"]
+[ext_resource type="PackedScene" uid="uid://3ga5a376q8ej" path="res://scenes/entities/player.tscn" id="3_eqae7"]
+
+[sub_resource type="Gradient" id="Gradient_eqae7"]
+offsets = PackedFloat32Array(0.8, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ilpit"]
+noise_type = 0
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_shv2d"]
+width = 1024
+height = 1024
+in_3d_space = true
+color_ramp = SubResource("Gradient_eqae7")
+noise = SubResource("FastNoiseLite_ilpit")
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_t1co0"]
+panorama = SubResource("NoiseTexture2D_shv2d")
+
+[sub_resource type="Sky" id="Sky_ljp3t"]
+sky_material = SubResource("PanoramaSkyMaterial_t1co0")
+
+[sub_resource type="Environment" id="Environment_pknou"]
+background_mode = 2
+sky = SubResource("Sky_ljp3t")
+
+[node name="StarSystemScene" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pknou")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
+
+[node name="Star" parent="." instance=ExtResource("1_4yjvo")]
+
+[node name="Planet" parent="." instance=ExtResource("2_8aytx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
+
+[node name="Player" parent="." instance=ExtResource("3_eqae7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0)
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player"]
+remote_path = NodePath("../../CameraPosition")
+update_rotation = false
+
+[node name="CameraPosition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPosition"]
+transform = Transform3D(-1, 0, 8.74228e-08, 8.44439e-08, 0.258819, 0.965926, -2.26267e-08, 0.965926, -0.258819, 0, 20, -5)

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7418dpyt0qo5"]
+
+[ext_resource type="PackedScene" uid="uid://cmege7dljkmi7" path="res://scenes/common/astronomical_object.tscn" id="1_mcqwg"]
+[ext_resource type="Script" uid="uid://5i6n4c3flqow" path="res://scenes/entities/star.gd" id="2_j6vao"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j6vao"]
+albedo_color = Color(1, 1, 0, 1)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_j6vao"]
+radius = 4.0
+
+[node name="Star" instance=ExtResource("1_mcqwg")]
+script = ExtResource("2_j6vao")
+type = 0
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="." index="0"]
+radius = 4.0
+radial_segments = 24
+rings = 12
+material = SubResource("StandardMaterial3D_j6vao")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+shape = SubResource("SphereShape3D_j6vao")

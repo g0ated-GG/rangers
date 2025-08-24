@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://3ga5a376q8ej"]
+
+[ext_resource type="PackedScene" uid="uid://ydicw247e3x" path="res://scenes/common/space_object.tscn" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://eo4aafc1nago" path="res://scenes/entities/player.gd" id="2_g2els"]
+[ext_resource type="PackedScene" uid="uid://p554xf6m75c2" path="res://scenes/common/hud.tscn" id="3_1ie0h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g2els"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g2els"]
+size = Vector3(3, 1, 2)
+
+[node name="Player" instance=ExtResource("1_3vyb7")]
+script = ExtResource("2_g2els")
+playerControlType = 2
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." index="0"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+material = SubResource("StandardMaterial3D_g2els")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+material = SubResource("StandardMaterial3D_g2els")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+material = SubResource("StandardMaterial3D_g2els")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+shape = SubResource("BoxShape3D_g2els")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="2"]
+
+[node name="HUD" parent="CanvasLayer" index="0" instance=ExtResource("3_1ie0h")]

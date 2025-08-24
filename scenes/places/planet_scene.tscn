@@ -1,0 +1,60 @@
+[gd_scene load_steps=14 format=3 uid="uid://bo4j06c2h2v5b"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cj6kp"]
+sky_top_color = Color(0.4, 0.705882, 1, 1)
+sky_horizon_color = Color(1, 0.596078, 0, 1)
+ground_bottom_color = Color(0, 0, 0.156863, 1)
+ground_horizon_color = Color(1, 0.596078, 0, 1)
+ground_curve = 0.0585638
+
+[sub_resource type="Sky" id="Sky_c2erd"]
+sky_material = SubResource("ProceduralSkyMaterial_cj6kp")
+
+[sub_resource type="Environment" id="Environment_8rran"]
+background_mode = 2
+sky = SubResource("Sky_c2erd")
+
+[sub_resource type="Gradient" id="Gradient_cj6kp"]
+colors = PackedColorArray(1, 0.498039, 0, 1, 0.690196, 0.498039, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_c2erd"]
+frequency = 0.021
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8rran"]
+in_3d_space = true
+seamless = true
+color_ramp = SubResource("Gradient_cj6kp")
+noise = SubResource("FastNoiseLite_c2erd")
+
+[sub_resource type="Gradient" id="Gradient_c2erd"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8rran"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ubkf5"]
+color_ramp = SubResource("Gradient_c2erd")
+noise = SubResource("FastNoiseLite_8rran")
+
+[sub_resource type="Gradient" id="Gradient_ffe7q"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mj31a"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2t1nq"]
+color_ramp = SubResource("Gradient_ffe7q")
+noise = SubResource("FastNoiseLite_mj31a")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ubkf5"]
+albedo_texture = SubResource("NoiseTexture2D_8rran")
+normal_texture = SubResource("NoiseTexture2D_ubkf5")
+subsurf_scatter_strength = 0.15
+subsurf_scatter_texture = SubResource("NoiseTexture2D_2t1nq")
+
+[node name="PlanetScene" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8rran")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+radius = 50.0
+radial_segments = 24
+rings = 12
+material = SubResource("StandardMaterial3D_ubkf5")

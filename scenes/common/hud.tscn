@@ -1,0 +1,228 @@
+[gd_scene load_steps=2 format=3 uid="uid://p554xf6m75c2"]
+
+[ext_resource type="Theme" uid="uid://dm2cqkwqro4s0" path="res://scenes/common/hud.tres" id="1_pcol3"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerInfo" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="PlayerInfo"]
+layout_mode = 0
+offset_right = 138.0
+offset_bottom = 52.0
+theme = ExtResource("1_pcol3")
+
+[node name="Label" type="Label" parent="PlayerInfo/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.5
+offset_top = -11.5
+offset_right = 39.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PlayerInfo"
+
+[node name="TargetInfo" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Panel" type="Panel" parent="TargetInfo"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -82.5
+offset_right = 82.5
+offset_bottom = 72.0
+grow_horizontal = 2
+theme = ExtResource("1_pcol3")
+
+[node name="Label" type="Label" parent="TargetInfo/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -11.5
+offset_right = 40.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "TargetInfo"
+
+[node name="Minimap" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Panel" type="Panel" parent="Minimap"]
+layout_mode = 0
+offset_left = -162.0
+offset_right = 40.0
+offset_bottom = 189.0
+theme = ExtResource("1_pcol3")
+
+[node name="Label" type="Label" parent="Minimap/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.5
+offset_top = -11.5
+offset_right = 34.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Minimap"
+
+[node name="Chat" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="Chat"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -306.0
+offset_right = 308.0
+grow_vertical = 0
+theme = ExtResource("1_pcol3")
+
+[node name="Label" type="Label" parent="Chat/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Chat"
+
+[node name="WeaponInfo" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="WeaponInfo"]
+layout_mode = 0
+offset_left = -264.0
+offset_top = -66.0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_pcol3")
+
+[node name="Label" type="Label" parent="WeaponInfo/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "WeaponInfo"
+
+[node name="TimeInfo" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="TimeInfo"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -82.0
+offset_top = -51.0
+offset_right = 83.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_pcol3")
+
+[node name="Label" type="Label" parent="TimeInfo/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.5
+offset_top = -11.5
+offset_right = 23.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "TimeInfo"
+
+[node name="CallWindow" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2

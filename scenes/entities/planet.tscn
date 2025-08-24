@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://cr3tltmkk8pfa"]
+
+[ext_resource type="PackedScene" uid="uid://cmege7dljkmi7" path="res://scenes/common/astronomical_object.tscn" id="1_cktii"]
+[ext_resource type="Script" uid="uid://b2iepyuk5bri3" path="res://scenes/entities/planet.gd" id="2_h8ms6"]
+
+[sub_resource type="Gradient" id="Gradient_h8ms6"]
+offsets = PackedFloat32Array(0, 0.3, 0.521739, 0.888199)
+colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ggt7d"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0k1rn"]
+seamless = true
+color_ramp = SubResource("Gradient_h8ms6")
+noise = SubResource("FastNoiseLite_ggt7d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_48b8c"]
+albedo_texture = SubResource("NoiseTexture2D_0k1rn")
+emission_enabled = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_h8ms6"]
+radius = 2.0
+
+[node name="Planet" instance=ExtResource("1_cktii")]
+script = ExtResource("2_h8ms6")
+objectName = ""
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="." index="0"]
+radius = 2.0
+radial_segments = 24
+rings = 12
+material = SubResource("StandardMaterial3D_48b8c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+shape = SubResource("SphereShape3D_h8ms6")
